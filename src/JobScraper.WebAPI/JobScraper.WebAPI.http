@@ -1,0 +1,6 @@
+@JobScraper.WebAPI_HostAddress = http://localhost:5238
+
+GET {{JobScraper.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
