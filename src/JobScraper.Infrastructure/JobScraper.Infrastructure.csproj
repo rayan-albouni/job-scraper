@@ -13,7 +13,7 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.12.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JobScraper.Core\JobScraper.Core.csproj" />
+    <ProjectReference Include="../JobScraper.Core/JobScraper.Core.csproj" />
   </ItemGroup>
 
 </Project>

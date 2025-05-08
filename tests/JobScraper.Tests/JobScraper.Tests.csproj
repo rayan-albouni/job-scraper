@@ -24,18 +24,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\JobScraper.Core\JobScraper.Core.csproj" />
-    <ProjectReference Include="..\..\src\JobScraper.Infrastructure\JobScraper.Infrastructure.csproj" />
+    <ProjectReference Include="../../src/JobScraper.Core/JobScraper.Core.csproj" />
+    <ProjectReference Include="../../src/JobScraper.Infrastructure/JobScraper.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\ValidJobHtmlSample.html">
+    <None Update="Resources/ValidJobHtmlSample.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\InvalidJobHtmlSample.html">
+    <None Update="Resources/InvalidJobHtmlSample.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\ValidJobHtmlSampleWithMissingFields.html">
+    <None Update="Resources/ValidJobHtmlSampleWithMissingFields.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

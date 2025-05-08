@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobScraper.ConsoleApp", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobScraper.Infrastructure", "src\JobScraper.Infrastructure\JobScraper.Infrastructure.csproj", "{2D13DF84-E1E6-4C3A-9A6E-802523F27726}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobScraper.WebAPI", "src\JobScraper.WebAPI\JobScraper.WebAPI.csproj", "{58374A49-241E-4A13-8DB2-4073A4900A4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobScraper.API", "src\JobScraper.API\JobScraper.API.csproj", "{58374A49-241E-4A13-8DB2-4073A4900A4D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2C209F3C-4696-41F6-A9A0-42A7A1E986FB}"
 EndProject
