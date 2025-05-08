@@ -29,16 +29,10 @@ jobs:
     - name: Run tests
       run: dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage"
  
-    - name: Generate coverage report
-      uses: danielpalme/reportgenerator-action@v5
-      with:
-        reports: '**/coverage.cobertura.xml'
-        targetdir: './coverage-report'
-
     - name: Install ReportGenerator
       run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
-    - name: 📝 Generate summary report
+    - name: Generate summary report
       run: |
         reportgenerator \
           -reports:tests/**/TestResults/**/coverage.cobertura.xml \
