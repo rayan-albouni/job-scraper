@@ -41,6 +41,6 @@ jobs:
 
     - name: Output coverage summary
       run: |
-        echo "### Code Coverage Summary"
-        cat coverage-report/Summary.md
+        echo "### Code Coverage Summary" >> $GITHUB_STEP_SUMMARY
+        cat coverage-report/Summary.md >> $GITHUB_STEP_SUMMARY
           
