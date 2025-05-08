@@ -1,33 +1,46 @@
-using JobScraper.Core.Entities;
 using JobScraper.Core.DTOs;
+using JobScraper.Core.Entities;
 using JobScraper.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
+namespace JobScraper.API.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
-public class JobScraperController : ControllerBase
+public class JobsController : ControllerBase
 {
-    private readonly IConfigurationService _cfg;
+    private readonly IConfigurationService _configSvc;
     private readonly IEnumerable<IJobScraperService> _scrapers;
 
-    public JobScraperController(IConfigurationService cfg, IEnumerable<IJobScraperService> scrapers)
+    public JobsController(
+        IConfigurationService configSvc,
+        IEnumerable<IJobScraperService> scrapers)
     {
-        _cfg = cfg;
+        _configSvc = configSvc;
         _scrapers = scrapers;
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] string source, [FromQuery] string query, [FromQuery] string location)
+    public async Task<IActionResult> GetJobs(
+        [FromQuery] string source,
+        [FromQuery] string query,
+        [FromQuery] string? location = null)
     {
-        var cfg = _cfg.GetConfig(source, query, location);
+        location ??= string.Empty;
+        var cfg = _configSvc.GetConfig(source, query, location);
+
         var results = new List<JobPosting>();
         foreach (var s in _scrapers)
         {
-            if (s.GetType().Name.Contains(source, StringComparison.OrdinalIgnoreCase))
-                results.AddRange(await s.ScrapeAsync(cfg));
+            if (s.GetType()
+                    .Name
+                    .Contains(source, StringComparison.OrdinalIgnoreCase))
+            {
+                var jobs = await s.ScrapeAsync(cfg);
+                results.AddRange(jobs);
+            }
         }
+
         return Ok(results);
     }
 }
-
-git commit --amend --author="rayan-albouni <rayanbouni@gmail.com>"
