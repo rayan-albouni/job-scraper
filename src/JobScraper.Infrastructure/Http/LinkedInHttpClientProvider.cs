@@ -1,6 +1,7 @@
 using JobScraper.Infrastructure.Configurations;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System.Net.Http;
 
 namespace JobScraper.Infrastructure.Http
 {
@@ -11,9 +12,10 @@ namespace JobScraper.Infrastructure.Http
 
         public LinkedInHttpClientProvider(IHttpClientFactory factory,
             IOptions<AppSettings> opts,
-            ILogger<LinkedInHttpClientProvider> log)
+            ILogger<LinkedInHttpClientProvider> log,
+            HttpMessageHandler? handler = null)
         {
-            _http = factory.CreateClient("LinkedIn");
+            _http = handler == null ? factory.CreateClient("LinkedIn") : new HttpClient(handler);
             _log = log;
 
             var headers = opts.Value.Scrapers;
