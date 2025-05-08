@@ -4,6 +4,7 @@ using JobScraper.Infrastructure.Configurations;
 using Microsoft.Extensions.Options;
 
 namespace JobScraper.Infrastructure.Repositories;
+
 public class ConfigurationService : IConfigurationService
 {
     private readonly AppSettings _settings;
@@ -20,7 +21,8 @@ public class ConfigurationService : IConfigurationService
             Query = query,
             Location = location,
             ResultsPerPage = _settings.Scrapers.ResultsPerPage,
-            Pages = _settings.Scrapers.Pages
+            Pages = _settings.Scrapers.Pages,
+            PostedWithinHours = _settings.Scrapers.PostedWithinHours
         };
         return cfg;
     }

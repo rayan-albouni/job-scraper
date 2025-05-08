@@ -34,15 +34,17 @@ public class LinkedInJobScraper : IJobScraperService
         var baseUrl = _settings.LinkedInUrl;
         var query = HttpUtility.UrlEncode(config.Query);
         var location = HttpUtility.UrlEncode(config.Location);
+        var tprSec = config.PostedWithinHours * 3600;
 
         for (int page = 0; page < config.Pages; page++)
         {
             var start = page * config.ResultsPerPage;
-            var url = $"{baseUrl}?keywords={query}&location={location}&start={start}";
+            var url = $"{baseUrl}?keywords={query}&location={location}&start={start}&f_TPR=r{tprSec}";
             var html = await _client.GetPageHtmlAsync(url);
             all.AddRange(_parser.Parse(html));
             await Task.Delay(_settings.PageDelayMs);
         }
+
         return all;
     }
 }
